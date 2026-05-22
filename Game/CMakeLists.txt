@@ -13,5 +13,10 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(raylib)
 
-add_executable(Game Main.cpp)
+add_executable(Game Main.cpp
+        CodeFiles/Constants.h
+        CodeFiles/Manneke.cpp
+        CodeFiles/Manneke.h
+        CodeFiles/Press.cpp
+        CodeFiles/Press.h)
 target_link_libraries(Game raylib)

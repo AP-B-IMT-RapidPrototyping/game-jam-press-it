@@ -1,43 +1,42 @@
+#include <vector>
+#include <bits/regex_constants.h>
+
 #include "raylib.h"
+#include "CodeFiles/Constants.h"
+#include "CodeFiles/Manneke.h"
+
 
 int main() {
-    InitWindow(800,800, "Fuck you!");
-    SetTargetFPS(120);
-    Vector2 textPos = Vector2{(float)GetScreenHeight() / 2, (float)GetScreenWidth() / 2   };
+    //Make window
+    InitWindow(screenWidth, screenHeight, "Press It");
+    SetTargetFPS(30);
 
-    Vector2 snelheid = {3.1, 2.5};
+    //Variabelen
+    auto mannekes = std::vector<Manneke*>();
+    int teller = 0;
+    //Window running
     while (!WindowShouldClose()) {
         BeginDrawing();
-        ClearBackground(RAYWHITE);
+        teller++;
+        if (teller == 30) {
 
-        DrawText("Ik haat dit",textPos.x, textPos.y,20, BLACK);
-
-        if (IsKeyDown(KEY_UP)) {
-            textPos.y -= 1;
-        }
-        if (IsKeyDown(KEY_DOWN)) {
-            textPos.y += 1;
-        }
-        if (IsKeyDown(KEY_LEFT)) {
-            textPos.x -= 1;
-        }
-        if (IsKeyDown(KEY_RIGHT)) {
-            textPos.x += 1;
+            mannekes.push_back(new Manneke());
+            teller = 0;
         }
 
-        textPos.x -= snelheid.x;
-        textPos.y -= snelheid.y;
-
-        if (textPos.x < 0 | textPos.x > GetScreenWidth()) {
-            snelheid.x *= -1;
+        for (auto m: mannekes) {
+            m->Draw();
+            m->Move();
+            if (m->position.x >screenWidth - 75) {
+                mannekes.erase(mannekes.begin());
+                delete m;
+            }
         }
-        if (textPos.y < 0 | textPos.y > GetScreenHeight()) {
-            snelheid.y *= -1;
-        }
 
+        //Hydraulic press code
 
-
-
+        ClearBackground(backgroundColor);
         EndDrawing();
     }
+    return 0;
 }
