@@ -8,7 +8,7 @@
 
 #include "./raylib.h"
 
-Vector2 moveSpeed;
+int moveSpeed;
 Vector2 position;
 Color color;
 
@@ -29,8 +29,8 @@ void Manneke::Draw(){
 };
 
 
-void Manneke::Move() {
-    position.x +=8;
+void Manneke::Move(int speed) {
+    position.x +=speed;
 };
 
 void Squish() {
