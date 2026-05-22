@@ -1,13 +1,18 @@
-//
-// Created by lukas on 22/05/2026.
-//
+#pragma once
 
-#ifndef GAME_PRESS_H
-#define GAME_PRESS_H
-
-
+#include "./raylib.h"
 class Press {
+
+public:
+    Vector2 prsPosition;
+
+    Press();
+
+    ~Press();
+
+    void Draw();
+
+    void Crush();
+
+    void Return();
 };
-
-
-#endif //GAME_PRESS_H

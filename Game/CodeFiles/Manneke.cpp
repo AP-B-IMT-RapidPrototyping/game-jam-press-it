@@ -25,7 +25,6 @@ Manneke::~Manneke() {
 };
 
 void Manneke::Draw(){
-
     DrawRectangle(position.x, position.y, 75, 75, color);
 };
 
@@ -34,12 +33,17 @@ void Manneke::Move() {
     position.x +=8;
 };
 
-bool Manneke::PickType() {
+void Squish() {
+
+};
+
+void Manneke::PickType() {
     int random = rand();
     if (random % 4 == 0) {
         color = enemyColor;
-        return 1;
+        isEnemy = true;
+        return;
     }
     color = civColor;
-    return 0;
+    isEnemy = false;
 };

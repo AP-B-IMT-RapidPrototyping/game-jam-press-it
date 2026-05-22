@@ -15,5 +15,6 @@ public:
 
     void Draw();
     void Move();
-    bool PickType();
+    void Squish();
+    void PickType();
 };
